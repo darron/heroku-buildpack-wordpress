@@ -1,15 +1,6 @@
 #!/usr/bin/env bash
 # bin/release <build-dir>
 
-NONCE_SALT="`< /dev/urandom /usr/bin/tr -dc _A-Z-a-z-0-9 | /usr/bin/head -c${1:-64};/bin/echo;`"
-LOGGED_IN_SALT="`< /dev/urandom /usr/bin/tr -dc _A-Z-a-z-0-9 | /usr/bin/head -c${1:-64};/bin/echo;`"
-SECURE_AUTH_SALT="`< /dev/urandom /usr/bin/tr -dc _A-Z-a-z-0-9 | /usr/bin/head -c${1:-64};/bin/echo;`"
-AUTH_SALT="`< /dev/urandom /usr/bin/tr -dc _A-Z-a-z-0-9 | /usr/bin/head -c${1:-64};/bin/echo;`"
-NONCE_KEY="`< /dev/urandom /usr/bin/tr -dc _A-Z-a-z-0-9 | /usr/bin/head -c${1:-64};/bin/echo;`"
-LOGGED_IN_KEY="`< /dev/urandom /usr/bin/tr -dc _A-Z-a-z-0-9 | /usr/bin/head -c${1:-64};/bin/echo;`"
-SECURE_AUTH_KEY="`< /dev/urandom /usr/bin/tr -dc _A-Z-a-z-0-9 | /usr/bin/head -c${1:-64};/bin/echo;`"
-AUTH_KEY="`< /dev/urandom /usr/bin/tr -dc _A-Z-a-z-0-9 | /usr/bin/head -c${1:-64};/bin/echo;`"
-
 cat <<EOF
 ---
 addons:
