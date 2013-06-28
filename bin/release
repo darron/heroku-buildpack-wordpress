@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # bin/release <build-dir>
 
-RANDOM="< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-64};echo;"
+RANDOM="< /dev/urandom /usr/bin/tr -dc _A-Z-a-z-0-9 | /usr/bin/head -c${1:-64};/bin/echo;"
 
 NONCE_SALT=`$RANDOM`
 LOGGED_IN_SALT=`$RANDOM`
