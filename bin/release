@@ -10,6 +10,8 @@ LOGGED_IN_KEY=`< /dev/urandom /usr/bin/tr -dc _A-Z-a-z-0-9 | /usr/bin/head -c${1
 SECURE_AUTH_KEY=`< /dev/urandom /usr/bin/tr -dc _A-Z-a-z-0-9 | /usr/bin/head -c${1:-64};/bin/echo;`
 AUTH_KEY=`< /dev/urandom /usr/bin/tr -dc _A-Z-a-z-0-9 | /usr/bin/head -c${1:-64};/bin/echo;`
 
+echo "AUTH_SALT: $AUTH_SALT"
+
 cat <<EOF
 ---
 addons:
