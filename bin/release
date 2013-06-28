@@ -1,6 +1,17 @@
 #!/usr/bin/env bash
 # bin/release <build-dir>
 
+RANDOM="< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-64};echo;"
+
+NONCE_SALT=`$RANDOM`
+LOGGED_IN_SALT=`$RANDOM`
+SECURE_AUTH_SALT=`$RANDOM`
+AUTH_SALT= `$RANDOM`
+NONCE_KEY=`$RANDOM`
+LOGGED_IN_KEY=`$RANDOM`
+SECURE_AUTH_KEY=`$RANDOM`
+AUTH_KEY=`$RANDOM`
+
 cat <<EOF
 ---
 addons:
@@ -18,6 +29,14 @@ config_vars:
   FORCE_SSL_ADMIN: true
   DISABLE_WP_CRON: true
   WP_CACHE: true
+  NONCE_SALT: $NONCE_SALT
+  LOGGED_IN_SALT: $LOGGED_IN_SALT
+  SECURE_AUTH_SALT: $SECURE_AUTH_SALT
+  AUTH_SALT: $AUTH_SALT
+  NONCE_KEY: $NONCE_KEY
+  LOGGED_IN_KEY: $LOGGED_IN_KEY
+  SECURE_AUTH_KEY: $SECURE_AUTH_KEY
+  AUTH_KEY: $AUTH_KEY
 default_process_types:
   web: start.sh
 EOF
