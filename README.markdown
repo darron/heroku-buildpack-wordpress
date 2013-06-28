@@ -27,6 +27,13 @@ Create Wordpress on Heroku.
 $ cd 99catfacts.com
 $ heroku create -s cedar
 $ heroku config:add BUILDPACK_URL=https://github.com/mchung/heroku-buildpack-wordpress.git
+$ heroku config:add AUTH_KEY=`head -c 60 /dev/urandom | base64`
+$ heroku config:add SECURE_AUTH_KEY=`head -c 60 /dev/urandom | base64`
+$ heroku config:add LOGGED_IN_KEY=`head -c 60 /dev/urandom | base64`
+$ heroku config:add NONCE_KEY=`head -c 60 /dev/urandom | base64`
+$ heroku config:add SECURE_AUTH_SALT=`head -c 60 /dev/urandom | base64`
+$ heroku config:add LOGGED_IN_SALT=`head -c 60 /dev/urandom | base64`
+$ heroku config:add NONCE_SALT=`head -c 60 /dev/urandom | base64`
 ```
 
 > Don't have the Heroku Toolbelt installed? Follow these [quickstart instructions](https://devcenter.heroku.com/articles/quickstart). Takes about 2 minutes.
