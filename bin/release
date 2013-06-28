@@ -10,8 +10,6 @@ LOGGED_IN_KEY=`< /dev/urandom /usr/bin/tr -dc _A-Z-a-z-0-9 | /usr/bin/head -c${1
 SECURE_AUTH_KEY=`< /dev/urandom /usr/bin/tr -dc _A-Z-a-z-0-9 | /usr/bin/head -c${1:-64};/bin/echo;`
 AUTH_KEY=`< /dev/urandom /usr/bin/tr -dc _A-Z-a-z-0-9 | /usr/bin/head -c${1:-64};/bin/echo;`
 
-echo "AUTH_SALT: $AUTH_SALT"
-
 cat <<EOF
 ---
 addons:
@@ -29,14 +27,14 @@ config_vars:
   FORCE_SSL_ADMIN: true
   DISABLE_WP_CRON: true
   WP_CACHE: true
-  NONCE_SALT: $NONCE_SALT
-  LOGGED_IN_SALT: $LOGGED_IN_SALT
-  SECURE_AUTH_SALT: $SECURE_AUTH_SALT
-  AUTH_SALT: $AUTH_SALT
-  NONCE_KEY: $NONCE_KEY
-  LOGGED_IN_KEY: $LOGGED_IN_KEY
-  SECURE_AUTH_KEY: $SECURE_AUTH_KEY
-  AUTH_KEY: $AUTH_KEY
+  NONCE_SALT: "$NONCE_SALT"
+  LOGGED_IN_SALT: "$LOGGED_IN_SALT"
+  SECURE_AUTH_SALT: "$SECURE_AUTH_SALT"
+  AUTH_SALT: "$AUTH_SALT"
+  NONCE_KEY: "$NONCE_KEY"
+  LOGGED_IN_KEY: "$LOGGED_IN_KEY"
+  SECURE_AUTH_KEY: "$SECURE_AUTH_KEY"
+  AUTH_KEY: "$AUTH_KEY"
 default_process_types:
   web: start.sh
 EOF
